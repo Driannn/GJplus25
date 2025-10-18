@@ -1,9 +1,15 @@
 extends CharacterBody2D
 
 @export var tongue_anim: AnimationPlayer
+@export var rotation_speed: float = 8.0 # ajusta para hacerlo más o menos suave
 
+
+#region Rotation variables
 ## Fix sprite rotation
 var rotation_offset_degrees: float = 90.0
+var target_pos: Vector2 = Vector2.ZERO
+var rotating: bool = false
+#endregion
 
 func _input(event):
 	if (event is InputEventScreenTouch and event.pressed) \
@@ -13,10 +19,16 @@ func _input(event):
 
 func look_at_input_pos(event) -> void:
 	var input_pos = event.position
-	var global_input_pos = get_viewport().get_canvas_transform().affine_inverse() * input_pos
+	target_pos = get_viewport().get_canvas_transform().affine_inverse() * input_pos
+	rotating = true
 
-	print("Coordenadas de la pantalla (Viewport): ", input_pos)
-	print_debug("Coordenadas globales (Mundo): ", global_input_pos)
+func _process(delta):
+	if rotating:
+		var target_angle = (target_pos - global_position).angle()
+		var desired_rotation = target_angle + deg_to_rad(rotation_offset_degrees)
+		rotation = lerp_angle(rotation, desired_rotation, delta * rotation_speed)
 
-	look_at(global_input_pos)
-	rotation += deg_to_rad(rotation_offset_degrees)
+		# detener rotación cuando esté suficientemente cerca
+		if abs(angle_difference(rotation, desired_rotation)) < 0.01:
+			rotation = desired_rotation
+			rotating = false

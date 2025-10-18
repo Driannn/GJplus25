@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://bmp5q6s5stcg4"]
+[gd_scene load_steps=7 format=4 uid="uid://bmp5q6s5stcg4"]
 
 [ext_resource type="Texture2D" uid="uid://cwbrxa0fl822d" path="res://level/floor.png" id="1_evyck"]
+[ext_resource type="PackedScene" uid="uid://dow6ddr6wg05s" path="res://level/spanwer.tscn" id="2_43ii6"]
 [ext_resource type="PackedScene" uid="uid://byj6cp2qkptuy" path="res://character/player.tscn" id="2_54fhk"]
 [ext_resource type="Texture2D" uid="uid://baimyf6qi7sov" path="res://level/Manchas.png" id="3_54fhk"]
 
@@ -22,17 +23,51 @@ tile_set = SubResource("TileSet_54fhk")
 rendering_quadrant_size = 32
 metadata/_edit_lock_ = true
 
+[node name="Spawners" type="Node2D" parent="."]
+
+[node name="Spanwer" parent="Spawners" instance=ExtResource("2_43ii6")]
+position = Vector2(115, -146)
+spawn_direction = 0
+
+[node name="Spanwer2" parent="Spawners" instance=ExtResource("2_43ii6")]
+position = Vector2(-118, -146)
+
 [node name="Player" parent="." instance=ExtResource("2_54fhk")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
 
 [node name="Manchas" type="Sprite2D" parent="."]
-position = Vector2(32, -77)
+position = Vector2(30, -67)
 texture = ExtResource("3_54fhk")
 hframes = 6
 
 [node name="Manchas2" type="Sprite2D" parent="."]
-position = Vector2(32, -77)
+position = Vector2(-21, -108)
 texture = ExtResource("3_54fhk")
 hframes = 6
+frame = 1
+
+[node name="Manchas3" type="Sprite2D" parent="."]
+position = Vector2(-44, -41)
+texture = ExtResource("3_54fhk")
+hframes = 6
+frame = 2
+
+[node name="Manchas4" type="Sprite2D" parent="."]
+position = Vector2(-33, 74)
+texture = ExtResource("3_54fhk")
+hframes = 6
+frame = 3
+
+[node name="Manchas5" type="Sprite2D" parent="."]
+position = Vector2(39, 29)
+texture = ExtResource("3_54fhk")
+hframes = 6
+frame = 4
+
+[node name="Manchas6" type="Sprite2D" parent="."]
+position = Vector2(21, 116)
+texture = ExtResource("3_54fhk")
+hframes = 6
+frame = 5
