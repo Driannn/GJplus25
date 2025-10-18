@@ -11,6 +11,8 @@ config_version=5
 [application]
 
 config/name="Ni tan corta"
+config/tags=PackedStringArray("gamejam")
+run/main_scene="uid://bmp5q6s5stcg4"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -18,3 +20,7 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=495
 window/size/viewport_height=880
+
+[rendering]
+
+renderer/rendering_method="mobile"
