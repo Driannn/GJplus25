@@ -1,12 +1,15 @@
 extends CharacterBody2D
 
+@export var tongue_anim: AnimationPlayer
+
 ## Fix sprite rotation
 var rotation_offset_degrees: float = 90.0
 
 func _input(event):
-	if (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed) \
-	or (event is InputEventScreenTouch and event.pressed):
+	if (event is InputEventScreenTouch and event.pressed) \
+	or (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed):
 		look_at_input_pos(event)
+		tongue_anim.play("TongueMove")
 
 func look_at_input_pos(event) -> void:
 	var input_pos = event.position
