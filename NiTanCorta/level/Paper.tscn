@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://boifk7sl7ti1l"]
+
+[ext_resource type="PackedScene" uid="uid://ccp631lfq1ue6" path="res://level/sparkly.tscn" id="1_857qh"]
+[ext_resource type="Texture2D" uid="uid://dj8tw0kw7f8jf" path="res://level/Bola_de_papel.png" id="2_vkv4w"]
+
+[node name="Sparkly" instance=ExtResource("1_857qh")]
+score_value = -5
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="3"]
+texture = ExtResource("2_vkv4w")

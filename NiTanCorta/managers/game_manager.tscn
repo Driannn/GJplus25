@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://ysiv7thut6l0"]
+[gd_scene load_steps=3 format=3 uid="uid://ysiv7thut6l0"]
 
 [ext_resource type="Script" uid="uid://brdsmee5nrgc0" path="res://managers/game_manager.gd" id="1_atyjh"]
+[ext_resource type="Script" uid="uid://cedj27clf7p6j" path="res://managers/score.gd" id="2_8647g"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_atyjh")
 
 [node name="Score" type="Node" parent="."]
+script = ExtResource("2_8647g")
 
 [node name="Audio" type="Node" parent="."]

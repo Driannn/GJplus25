@@ -1,5 +1,7 @@
 extends Node
 
+@onready var score: ScoreManager = $Score
+@onready var audio: Node = $Audio
 
-@onready var game_manager: Node = $"."
-@onready var score: Node = $Score
+func win():
+	pass

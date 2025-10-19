@@ -33,7 +33,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yhjdt"]
-radius = 11.0
+radius = 8.0
 
 [node name="Sparkly" type="Area2D"]
 texture_filter = 1
@@ -41,6 +41,7 @@ collision_layer = 2
 script = ExtResource("1_yhjdt")
 possible_colors = Array[Color]([Color(1, 1, 1, 1), Color(0, 1, 1, 1), Color(1, 0.5647059, 1, 1), Color(0.100000024, 1, 0, 1)])
 speed = 50.0
+score_value = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nw7c4")
@@ -52,4 +53,8 @@ position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_yhjdt")
 debug_color = Color(0.68833333, 0.7, 0, 0.41960785)
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
