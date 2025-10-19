@@ -21,6 +21,18 @@ config/icon="res://icon.svg"
 window/size/viewport_width=495
 window/size/viewport_height=880
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_physics/layer_1="Tounge"
+2d_physics/layer_2="Goodthings"
+2d_physics/layer_3="BadThings"
+2d_physics/layer_4="Solidthings"
+
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

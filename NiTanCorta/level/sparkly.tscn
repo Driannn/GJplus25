@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccp631lfq1ue6"]
+
+[ext_resource type="Texture2D" uid="uid://ch8crpktsy3ku" path="res://level/sparkly.png" id="1_pkqp4"]
+[ext_resource type="Script" uid="uid://joyfjsrvg02m" path="res://level/sparkly.gd" id="1_yhjdt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhjdt"]
+atlas = ExtResource("1_pkqp4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5y2bk"]
+atlas = ExtResource("1_pkqp4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53e4o"]
+atlas = ExtResource("1_pkqp4")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nw7c4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhjdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5y2bk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53e4o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yhjdt"]
+radius = 11.0
+
+[node name="Sparkly" type="Area2D"]
+texture_filter = 1
+collision_layer = 2
+script = ExtResource("1_yhjdt")
+possible_colors = Array[Color]([Color(1, 1, 1, 1), Color(0, 1, 1, 1), Color(1, 0.5647059, 1, 1), Color(0.100000024, 1, 0, 1)])
+speed = 50.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nw7c4")
+autoplay = "default"
+frame_progress = 0.6589891
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_yhjdt")
+debug_color = Color(0.68833333, 0.7, 0, 0.41960785)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
