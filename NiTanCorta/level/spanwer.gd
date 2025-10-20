@@ -10,6 +10,8 @@ extends Node2D
 @export var spawn_interval: float = 1.0 # tiempo entre spawns en segundos
 @export var speed: float = 200.0 # velocidad de los objetos
 
+@export var level: MainLevel
+
 var spawn_timer: float = 0.0
 
 func _ready() -> void:
@@ -38,5 +40,8 @@ func spawn_object() -> void:
 
 	# Agregar un script sencillo para moverlo
 	new_instance.direction = spawn_direction
-
+	
+	if level != null:
+		new_instance.win_notify.connect(level.on_win_listened)
+	
 	add_child(new_instance)

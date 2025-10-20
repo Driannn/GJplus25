@@ -41,7 +41,7 @@ collision_layer = 2
 script = ExtResource("1_yhjdt")
 possible_colors = Array[Color]([Color(1, 1, 1, 1), Color(0, 1, 1, 1), Color(1, 0.5647059, 1, 1), Color(0.100000024, 1, 0, 1)])
 speed = 50.0
-score_value = 5
+score_value = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nw7c4")

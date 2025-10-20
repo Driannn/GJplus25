@@ -16,6 +16,8 @@ func _input(event):
 	or (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed):
 		look_at_input_pos(event)
 		tongue_anim.play("TongueMove")
+		GameManager.audio.tongue.play()
+		GameManager.audio.eat_good.play()
 
 func look_at_input_pos(event) -> void:
 	var input_pos = event.position

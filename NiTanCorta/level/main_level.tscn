@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=4 uid="uid://bmp5q6s5stcg4"]
+[gd_scene load_steps=12 format=4 uid="uid://bmp5q6s5stcg4"]
 
 [ext_resource type="Texture2D" uid="uid://cwbrxa0fl822d" path="res://level/floor.png" id="1_evyck"]
+[ext_resource type="Script" uid="uid://b363pgp23pw2r" path="res://level/main_level.gd" id="1_i2c4w"]
 [ext_resource type="PackedScene" uid="uid://dow6ddr6wg05s" path="res://level/spanwer.tscn" id="2_43ii6"]
 [ext_resource type="PackedScene" uid="uid://byj6cp2qkptuy" path="res://character/player.tscn" id="2_54fhk"]
 [ext_resource type="Texture2D" uid="uid://baimyf6qi7sov" path="res://level/Manchas.png" id="3_54fhk"]
 [ext_resource type="PackedScene" uid="uid://dq1pnsnjqgskb" path="res://level/progress_bar.tscn" id="5_o7jp2"]
+[ext_resource type="FontFile" uid="uid://dqa0pi3uww2qc" path="res://muh_handwriting.ttf" id="7_05d1k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_evyck"]
 texture = ExtResource("1_evyck")
@@ -15,7 +17,22 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_evyck")
 
+[sub_resource type="LabelSettings" id="LabelSettings_o7jp2"]
+line_spacing = 3.03
+font = ExtResource("7_05d1k")
+font_size = 76
+
+[sub_resource type="LabelSettings" id="LabelSettings_i2c4w"]
+font = ExtResource("7_05d1k")
+font_size = 59
+
 [node name="level" type="Node"]
+script = ExtResource("1_i2c4w")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 modulate = Color(0.8217887, 0.82178867, 0.82178867, 1)
@@ -69,12 +86,14 @@ frame = 5
 
 [node name="Spawners" type="Node2D" parent="."]
 
-[node name="Spanwer" parent="Spawners" instance=ExtResource("2_43ii6")]
+[node name="Spanwer" parent="Spawners" node_paths=PackedStringArray("level") instance=ExtResource("2_43ii6")]
 position = Vector2(115, -146)
 spawn_direction = 0
+level = NodePath("../..")
 
-[node name="Spanwer2" parent="Spawners" instance=ExtResource("2_43ii6")]
+[node name="Spanwer2" parent="Spawners" node_paths=PackedStringArray("level") instance=ExtResource("2_43ii6")]
 position = Vector2(-118, -146)
+level = NodePath("../..")
 
 [node name="Player" parent="." instance=ExtResource("2_54fhk")]
 
@@ -90,10 +109,113 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -86.5
-offset_top = -56.0
-offset_right = 86.5
-offset_bottom = -29.0
+offset_left = -148.5
+offset_top = -102.0
+offset_right = 148.5
+offset_bottom = -41.0
 grow_horizontal = 2
 grow_vertical = 0
-value = 0.21
+theme_override_fonts/font = ExtResource("7_05d1k")
+theme_override_font_sizes/font_size = 26
+
+[node name="WinPanel" type="Panel" parent="UI"]
+visible = false
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -73.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/WinPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOU WIN!"
+label_settings = SubResource("LabelSettings_o7jp2")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="UI/WinPanel"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -33.5
+offset_top = 17.0
+offset_right = 31.5
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("7_05d1k")
+theme_override_font_sizes/font_size = 36
+text = "Restart"
+
+[node name="LosePanel" type="Panel" parent="UI"]
+visible = false
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -73.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/LosePanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOU LOSE!"
+label_settings = SubResource("LabelSettings_o7jp2")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="UI/LosePanel"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -33.5
+offset_top = 17.0
+offset_right = 31.5
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("7_05d1k")
+theme_override_font_sizes/font_size = 36
+text = "Restart"
+
+[node name="Label" type="Label" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -24.0
+offset_top = 58.0
+offset_right = 24.0
+offset_bottom = 107.0
+grow_horizontal = 2
+text = "TIMER
+LABEL"
+label_settings = SubResource("LabelSettings_i2c4w")
+
+[connection signal="pressed" from="UI/WinPanel/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="UI/LosePanel/Button" to="." method="_on_button_pressed"]

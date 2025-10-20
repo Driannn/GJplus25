@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bs5cbvjs5do66"
+path="res://.godot/imported/GJplusMX.ogg-0160844fd366fc139cd03d91983dfda6.oggvorbisstr"
+
+[deps]
+
+source_file="res://main menu/GJplusMX.ogg"
+dest_files=["res://.godot/imported/GJplusMX.ogg-0160844fd366fc139cd03d91983dfda6.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

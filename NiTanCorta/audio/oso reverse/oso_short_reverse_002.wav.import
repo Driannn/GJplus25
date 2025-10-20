@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://w3i3dj3xgme8"
+path="res://.godot/imported/oso_short_reverse_002.wav-d76cb3995f032300d02b8933a11c1347.sample"
+
+[deps]
+
+source_file="res://audio/oso reverse/oso_short_reverse_002.wav"
+dest_files=["res://.godot/imported/oso_short_reverse_002.wav-d76cb3995f032300d02b8933a11c1347.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

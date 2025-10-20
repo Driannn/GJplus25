@@ -8,8 +8,7 @@
 script = ExtResource("1_kvhnl")
 spawn_direction = 1
 scenes_to_spawn = Array[PackedScene]([ExtResource("2_jummc"), ExtResource("3_irdty")])
-spawn_interval = 2.0
-speed = 150.0
+spawn_interval = 1.5
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, 10)

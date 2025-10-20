@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2vej1j67u33a"]
+
+[ext_resource type="Texture2D" uid="uid://cgowoo8c1ikym" path="res://main menu/TitlePaper.png" id="1_m48o8"]
+[ext_resource type="Texture2D" uid="uid://cxeanmaaugxfk" path="res://main menu/Title.png" id="2_ra13p"]
+[ext_resource type="Texture2D" uid="uid://cbghl3kemv4a5" path="res://main menu/Titlebutton.png" id="3_45qoi"]
+[ext_resource type="FontFile" uid="uid://dqa0pi3uww2qc" path="res://muh_handwriting.ttf" id="4_45qoi"]
+[ext_resource type="PackedScene" uid="uid://bmp5q6s5stcg4" path="res://level/main_level.tscn" id="4_ra13p"]
+
+[sub_resource type="GDScript" id="GDScript_m48o8"]
+script/source = "extends Button
+
+@export var main_scene: PackedScene
+
+func _on_pressed() -> void:
+	GameManager.audio.button.play()
+	get_tree().change_scene_to_packed(main_scene)
+"
+
+[node name="MainMenu" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_m48o8")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ra13p")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_45qoi")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.5
+offset_top = 36.0
+offset_right = 64.5
+offset_bottom = 113.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_45qoi")
+theme_override_font_sizes/font_size = 50
+text = "PLAY"
+script = SubResource("GDScript_m48o8")
+main_scene = ExtResource("4_ra13p")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Ni tan corta"
 config/tags=PackedStringArray("gamejam")
-run/main_scene="uid://bmp5q6s5stcg4"
+run/main_scene="uid://d2vej1j67u33a"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -24,6 +24,7 @@ GameManager="*res://managers/game_manager.tscn"
 
 window/size/viewport_width=495
 window/size/viewport_height=880
+window/stretch/mode="canvas_items"
 
 [input_devices]
 
